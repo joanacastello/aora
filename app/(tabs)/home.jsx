@@ -1,34 +1,41 @@
-import { View, Text, FlatList, Image, RefreshControlComponent } from 'react-native'
-import React, { useState } from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { useEffect, useState } from "react";
+import { Alert, FlatList, Image, RefreshControl, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { images } from "../../constants";
 
-import { images } from '../../constants'
-import SearchInput from '../../components/SearchInput'
-import Trending from '../../components/Trending'
-import EmptyState from '../../components/EmptyState'
+import SearchInput from "../../components/SearchInput";
+import Trending from "../../components/Trending";
+import VideoCard from "../../components/VideoCard";
+import { getAllPosts, getLatestPosts } from "../../lib/appwrite";
+import useAppwrite from "../../lib/useAppwrite";
+import EmptyState from "../../components/EmptyState";
 
 const Home = () => {
+  const { data: posts, refetch } = useAppwrite(getAllPosts);
+
+  const { data: latestPosts } = useAppwrite(getLatestPosts);
+
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = async () => {
     setRefreshing(true);
-    // re call videos -> if new videos appeared
-
+    await refetch();
     setRefreshing(false);
   }
 
   return (
     <SafeAreaView className='bg-primary h-full'>
       <FlatList
-        //data={[{ id: 1 }, { id: 2 }, { id: 3 },]}
-        data={[]}
-        keyExtractor={(item) => item.$id}
+        data={posts}
+        keyExtractor={item => item.$id}
         renderItem={({ item }) => (
-          <Text className='text-3xl'>{item.id}</Text>
+          <VideoCard
+            video={item}
+          />
         )}
         ListHeaderComponent={() => (
           <View className='my-6 px-4 space-y-6'>
-            <View className='justify-between items-start flex-rowmy-6'>
+            <View className='justify-between items-start flex-row my-6'>
               <View>
                 <Text className='font-pmedium text-sm text-gray-100'>Welcome Back</Text>
                 <Text className='text-xl font-psemibold text-white'>Joana</Text>
@@ -47,7 +54,7 @@ const Home = () => {
 
             <View className='w-full flex-1 pt-5 pb-8'>
               <Text className='text-gray-100 text-lg font-pregular mb-3'>Latest videos</Text>
-              <Trending posts={[{ id: 6 }, { id: 7 }, { id: 8 }] ?? []} />
+              <Trending posts={latestPosts ?? []} />
             </View>
           </View>
         )}
@@ -57,10 +64,10 @@ const Home = () => {
             subtitle='Be the first one to add a video'
           />
         )}
-        refreshControl={<RefreshControlComponent refreshing={refreshing} onRefresh={onRefresh} />}
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
       />
     </SafeAreaView>
   )
 }
 
-export default Home
+export default Home;
