@@ -1,6 +1,6 @@
 <h1 align="center">AORA - Video Sharing App</h1>
 
-# 📋 Table of Contents
+## 📋 Table of Contents
 
 1. 🤖 [Introduction](#introduction)
 2. ⚙️ [Tech Stack](#tech-stack)
@@ -42,3 +42,37 @@ This repository contains the code corresponding to an amazing [Youtube tutorial]
 👉 **Animations**: Dynamic animations using the Animatable library to enhance user interaction and engagement throughout the app's UI.
 
 And many more, including code architecture and reusability
+
+# 🤸 Quick Start
+Follow these steps to set up the project locally on your machine.
+
+**Prerequisites**
+
+Make sure you have the following installed on your machine:
+
+- Git
+- Node.js
+- npm (Node Package Manager)
+
+**Cloning the Repository*+
+```
+git clone https://github.com/adrianhajdin/aora.git
+cd aora
+```
+**Installation**
+
+Install the project dependencies using npm:
+```
+npm install
+```
+
+**Running the Project**
+```
+npm start
+```
+
+**Expo Go**
+
+Download the [Expo Go](https://expo.dev/go) app onto your device, then use it to scan the QR code from Terminal and run.
+
+
