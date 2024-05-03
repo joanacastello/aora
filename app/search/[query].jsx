@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
-import { Alert, FlatList, Image, RefreshControl, Text, View } from "react-native";
+import { useEffect } from "react";
+import { FlatList, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { images } from "../../constants";
 
 import SearchInput from "../../components/SearchInput";
-import Trending from "../../components/Trending";
 import VideoCard from "../../components/VideoCard";
 import { searchPosts } from "../../lib/appwrite";
 import useAppwrite from "../../lib/useAppwrite";
