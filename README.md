@@ -1,4 +1,4 @@
-<h1 align="center">AORA</h1>
+<h1 align="center">AORA - Video Sharing App</h1>
 
 # 📋 Table of Contents
 
