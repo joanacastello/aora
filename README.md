@@ -1,6 +1,7 @@
 <h1 align="center">AORA - Video Sharing App</h1>
 
-![image](https://github.com/joanacastello/aora/assets/43773717/a0ffc65b-dea6-4a6f-95b7-563a305c72f8)
+![image](https://github.com/joanacastello/aora/assets/43773717/1988fc13-e872-47a8-93b9-5b95a540cd70)
+
 
 ## 📋 Table of Contents
 
